@@ -35,12 +35,12 @@ Sign up follows Directus' own **Public Registration** setting (Settings > Projec
 1. Send the browser to
 
    ```
-   GET <DIRECTUS>/shilp/google-auth/start?redirect=https://app.com/auth/google
+   GET <DIRECTUS>/shilp/google-auth/start?redirect_uri=https://app.com/auth/callback
    ```
 
-2. The user signs in at Google and lands on your `redirect` URL with either
+2. The user signs in at Google and lands on your `redirect_uri` URL with either
    - `?code=<code>`: success, or
-   - `?google_auth_error=<ERROR_CODE>`: failure (see below).
+   - `?error=<ERROR_CODE>`: failure (see below).
 3. Trade the code for tokens with the standard Directus endpoint. It works with every mode (`json`, `cookie`, `session`) and with the Directus SDK's `refresh()`:
 
    ```bash

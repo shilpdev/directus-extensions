@@ -12,7 +12,7 @@ import type { Config, EndpointContext, LoginFlow, Router } from '../types'
  * GET /shilp/google-auth/callback
  * Google sends the browser here. On success the browser is redirected to
  * the frontend with `?code=...`. On failure it gets
- * `?google_auth_error=<CODE>`.
+ * `?error=<CODE>`.
  */
 export function registerCallbackRoute(router: Router, context: EndpointContext) {
   router.get('/callback', async (req, res) => {
@@ -65,10 +65,10 @@ export function registerCallbackRoute(router: Router, context: EndpointContext) 
        */
       backToFrontend({ code: await createSession(context, req, userId, SESSION_CODE_TTL_MS) })
     } catch (error) {
-      if (error instanceof LoginError) return backToFrontend({ google_auth_error: error.code })
+      if (error instanceof LoginError) return backToFrontend({ error: error.code })
 
       context.logger.error(error, `${LOG_PREFIX} callback failed`)
-      backToFrontend({ google_auth_error: 'INTERNAL_SERVER_ERROR' })
+      backToFrontend({ error: 'INTERNAL_SERVER_ERROR' })
     }
   })
 }

@@ -1,7 +1,5 @@
-export const ENDPOINT_ID = 'shilp/google-auth'
+// Refresh the access token this long before it expires
+export const REFRESH_MARGIN_MS = 60 * 1000
 
-// Query params the extension adds when it sends the browser back to the frontend
-export const QUERY_CODE = 'code'
-export const QUERY_ERROR = 'google_auth_error'
-
-export const GOOGLE_IDENTITY_SCRIPT_URL = 'https://accounts.google.com/gsi/client'
+// Wait this long before retrying a refresh that failed because Directus was unreachable
+export const REFRESH_RETRY_MS = 10 * 1000
