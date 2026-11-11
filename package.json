@@ -1,0 +1,16 @@
+{
+  "name": "directus-extensions",
+  "private": true,
+  "description": "Monorepo of Directus extensions with a local Docker dev instance",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"./packages/*\" run dev",
+    "build": "pnpm --recursive --filter \"./packages/*\" run build",
+    "playground": "pnpm --filter playground dev",
+    "directus:up": "docker compose up -d",
+    "directus:down": "docker compose down",
+    "directus:logs": "docker compose logs -f directus",
+    "directus:restart": "docker compose up -d --force-recreate directus",
+    "directus:reset": "docker compose down && rm -rf docker/database/data.db docker/uploads/*"
+  }
+}

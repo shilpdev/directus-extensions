@@ -1,0 +1,8 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+
+# Build scripts pnpm may run. esbuild is needed by directus-extension build.
+allowBuilds:
+  esbuild: true
+  vue-demi: false

@@ -1,0 +1,16 @@
+# Local Directus instance for developing the extensions in ./packages.
+# Every sub-folder of ./packages that is a Directus extension (package.json
+# with a "directus:extension" field and a built ./dist) is picked up
+# automatically and hot-reloaded when its build output changes.
+# All configuration lives in .env (copy .env.example to .env).
+services:
+  directus:
+    image: directus/directus:11
+    ports:
+      - "${DIRECTUS_PORT}:8055"
+    env_file: .env
+    volumes:
+      - ./docker/database:/directus/database
+      - ./docker/uploads:/directus/uploads
+      - ./packages:/directus/extensions
+    restart: unless-stopped

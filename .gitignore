@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.DS_Store
+docker/database/*
+docker/uploads/*
+!docker/database/.gitkeep
+!docker/uploads/.gitkeep

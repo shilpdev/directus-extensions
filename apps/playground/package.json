@@ -1,0 +1,15 @@
+{
+  "name": "playground",
+  "private": true,
+  "type": "module",
+  "description": "Nuxt app to try the @shilp.dev/directus-google-auth login flows against the local Directus",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "nuxt": "^4.6.4",
+    "vue": "^3.5.45"
+  }
+}

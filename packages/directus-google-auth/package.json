@@ -1,0 +1,33 @@
+{
+  "name": "@shilp.dev/directus-google-auth",
+  "description": "Login with Google for custom frontends. Signs users in (and registers them on first login) as regular Directus users.",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-endpoint",
+    "google",
+    "oauth",
+    "login"
+  ],
+  "directus:extension": {
+    "type": "endpoint",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^11.0.0"
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify"
+  },
+  "dependencies": {
+    "jose": "^6.0.0"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "^16.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
