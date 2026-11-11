@@ -1,6 +1,6 @@
 {
   "name": "@shilp.dev/directus-google-auth",
-  "description": "Login with Google for custom frontends. Signs users in (and registers them on first login) as regular Directus users.",
+  "description": "Google authentication for custom frontends, allowing users to sign in or register as regular Directus users using their Google accounts.",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
