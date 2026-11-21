@@ -67,5 +67,6 @@ export async function verifyIdToken(
     email,
     firstName: toText(claims.given_name),
     lastName: toText(claims.family_name),
+    picture: toText(claims.picture),
   }
 }

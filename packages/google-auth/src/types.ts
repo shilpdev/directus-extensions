@@ -26,6 +26,8 @@ export type GoogleProfile = {
   email: string
   firstName: string | null
   lastName: string | null
+  // The photo URL Google puts in the ID token on every login
+  picture: string | null
 }
 
 // Everything needed to finish a login, carried in the signed cookie

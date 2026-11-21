@@ -39,7 +39,7 @@ Sign up follows Directus' own **Public Registration** setting (Settings > Projec
    ```
 
 2. The user signs in at Google and lands on your `redirect_uri` URL with either
-   - `?code=<code>`: success, or
+   - `?code=<code>`: success (plus `&picture=<url>`, the Google photo URL, when Google sent one; it is not stored anywhere), or
    - `?error=<ERROR_CODE>`: failure (see below).
 3. Trade the code for tokens with the standard Directus endpoint. It works with every mode (`json`, `cookie`, `session`) and with the Directus SDK's `refresh()`:
 

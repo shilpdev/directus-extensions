@@ -63,7 +63,15 @@ export function registerCallbackRoute(router: Router, context: EndpointContext) 
        * trades it for real tokens with POST /auth/refresh, which also
        * rotates it, so it works only once.
        */
-      backToFrontend({ code: await createSession(context, req, userId, SESSION_CODE_TTL_MS) })
+      /*
+       * Google's photo URL travels with the code, so the frontend can show it
+       * without it being stored in Directus. It is only a display hint: the
+       * code is what proves the login.
+       */
+      backToFrontend({
+        code: await createSession(context, req, userId, SESSION_CODE_TTL_MS),
+        ...(profile.picture ? { picture: profile.picture } : {}),
+      })
     } catch (error) {
       if (error instanceof LoginError) return backToFrontend({ error: error.code })
 
