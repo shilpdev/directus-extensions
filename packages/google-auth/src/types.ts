@@ -1,3 +1,7 @@
+import type { AUTH_MODES } from './constants/session'
+
+export type AuthMode = (typeof AUTH_MODES)[number]
+
 export type Logger = {
   info: (message: string) => void
   error: (error: unknown, message?: string) => void
@@ -36,6 +40,7 @@ export type LoginFlow = {
   nonce: string
   verifier: string
   redirect: string
+  mode: AuthMode
 }
 
 type RouteHandler = (req: any, res: any) => unknown

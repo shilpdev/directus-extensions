@@ -1,7 +1,7 @@
 {
   "name": "@shilp.dev/directus-google-auth",
   "description": "Google authentication for custom frontends, allowing users to sign in or register as regular Directus users using their Google accounts.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "license": "MIT",
   "author": "7Span (https://7span.com)",
@@ -42,8 +42,10 @@
   },
   "devDependencies": {
     "@directus/extensions-sdk": "^16.0.0",
+    "@types/ms": "^2.1.0",
     "@types/node": "^22.0.0",
     "jose": "^6.0.0",
+    "ms": "2.1.3",
     "typescript": "^5.6.0"
   }
 }

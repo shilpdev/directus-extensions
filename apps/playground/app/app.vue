@@ -1,13 +1,5 @@
-<script setup lang="ts">
-import { Auth } from '@shilp.dev/vue-google-auth'
-
-const { $authAdapter } = useNuxtApp()
-</script>
-
 <template>
-  <Auth :adapter="$authAdapter">
-    <NuxtPage />
-  </Auth>
+  <NuxtPage />
 </template>
 
 <style>
@@ -39,11 +31,6 @@ dt {
 }
 dd {
   margin: 0;
-}
-.token {
-  word-break: break-all;
-  font-family: monospace;
-  font-size: 12px;
 }
 .muted {
   color: #777;

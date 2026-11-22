@@ -3,14 +3,15 @@ import { FLOW_COOKIE_NAME, FLOW_COOKIE_TTL_SECONDS } from '../constants'
 import { GOOGLE_AUTH_URL, GOOGLE_SCOPE } from '../constants/google'
 import { matchRedirect, requireConfig } from '../lib/config'
 import { LoginError } from '../lib/errors'
+import { parseAuthMode } from '../lib/auth-mode'
 import { signFlow } from '../lib/flow-cookie'
 import { randomToken, sendError } from '../lib/http'
 import type { EndpointContext, Router } from '../types'
 
 /*
- * GET /shilp/google-auth/start?redirect_uri=https://app.example.com/auth/callback
+ * GET /shilp/google-auth/start?redirect_uri=https://app.example.com/auth/callback&mode=session
  * Send the browser here. It continues to Google, and afterwards comes back
- * to `redirect_uri`.
+ * to `redirect_uri`. `mode` is "session" (default) or "json", see AUTH_MODES.
  */
 export function registerStartRoute(router: Router, context: EndpointContext) {
   router.get('/start', async (req, res) => {
@@ -22,11 +23,13 @@ export function registerStartRoute(router: Router, context: EndpointContext) {
         throw new LoginError(400, 'INVALID_REDIRECT', 'redirect_uri is missing or not in SHILP_GOOGLE_AUTH_REDIRECT_ALLOW_LIST')
       }
 
+      const mode = parseAuthMode(req.query.mode)
+
       const state = randomToken()
       const nonce = randomToken()
       const verifier = randomToken()
 
-      const cookie = await signFlow(context, { state, nonce, verifier, redirect: redirect.toString() })
+      const cookie = await signFlow(context, { state, nonce, verifier, redirect: redirect.toString(), mode })
 
       res.cookie(FLOW_COOKIE_NAME, cookie, {
         httpOnly: true,

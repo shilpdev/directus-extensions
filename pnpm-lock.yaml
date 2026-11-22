@@ -10,9 +10,9 @@ importers:
 
   apps/playground:
     dependencies:
-      '@shilp.dev/vue-google-auth':
-        specifier: workspace:*
-        version: link:../../packages/vue-google-auth
+      '@directus/sdk':
+        specifier: ^27.2.0
+        version: 27.2.0
       nuxt:
         specifier: ^4.6.4
         version: 4.6.4(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.13(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.13(supports-color@10.2.2)))(@oxc-project/types@0.156.0)(@types/node@22.20.5)(@vue/compiler-sfc@3.5.45)(acorn@8.19.0)(bare-buffer@3.7.1)(confbox@0.3.2)(db0@0.3.4)(dotenv@17.4.2)(esbuild@0.28.2)(giget@3.3.1)(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(mlly@1.8.2)(rolldown@1.2.16)(rollup-plugin-visualizer@7.1.3(rolldown@1.2.16)(rollup@4.67.5))(rollup@4.67.5)(srvx@1.0.8)(supports-color@10.2.2)(terser@5.51.2)(typescript@5.9.3)(vite@8.3.6(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2))(vue-tsc@3.3.14(typescript@6.0.3))
@@ -25,12 +25,18 @@ importers:
       '@directus/extensions-sdk':
         specifier: ^16.0.0
         version: 16.0.2(@types/node@22.20.5)(@unhead/vue@1.11.20(vue@3.5.18(typescript@5.9.3)))(debug@4.4.3(supports-color@10.2.2))(jiti@2.7.0)(knex@3.1.0(supports-color@10.2.2))(lightningcss@1.33.0)(pinia@2.3.1(typescript@5.9.3)(vue@3.5.18(typescript@5.9.3)))(supports-color@10.2.2)(terser@5.51.2)(typescript@5.9.3)
+      '@types/ms':
+        specifier: ^2.1.0
+        version: 2.1.0
       '@types/node':
         specifier: ^22.0.0
         version: 22.20.5
       jose:
         specifier: ^6.0.0
         version: 6.2.15
+      ms:
+        specifier: 2.1.3
+        version: 2.1.3
       typescript:
         specifier: ^5.6.0
         version: 5.9.3
@@ -246,6 +252,10 @@ packages:
 
   '@directus/schema@13.0.3':
     resolution: {integrity: sha512-Ls3QdpDDbsaI+/JiRH1WvPzc8zMdaQv+Rww2oyF1GFkXGQFb3RvYM3MX9WTU4RpD4/6YWrAeCaz+jeJlNVz/UQ==}
+
+  '@directus/sdk@27.2.0':
+    resolution: {integrity: sha512-/9Z7/VU4IPKhx54XCREW6VRUtTPz/KD64XPujXb2kF5pJvNKJytoUZBacuvWT6sz52/+/47t8bBMYHpeejPUww==}
+    engines: {node: '>=22'}
 
   '@directus/system-data@3.3.0':
     resolution: {integrity: sha512-dDoG/lMHly2hivOE73CPndCREuuzB7E84zBFgmmcLsR9UowC0nrohaeJ2U3s3//XwzU+VTkDR7O1n3s8B0xOgg==}
@@ -1538,6 +1548,9 @@ packages:
 
   '@types/http-errors@2.0.5':
     resolution: {integrity: sha512-r8Tayk8HJnX0FztbZN7oVqGccWgw98T/0neJphO91KkmOzug1KkofZURD4UaD5uH8AqcFLfdPErnBod0u71/qg==}
+
+  '@types/ms@2.1.0':
+    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
   '@types/node@22.20.5':
     resolution: {integrity: sha512-U2+DNr+wSjpsTS/wZGYHq7GcwfuSmKiKvoPvK22zwTlRhU91yOniN4qRR5KhIjvif7ysw/dz/hKmfDH0Ris4aA==}
@@ -5047,6 +5060,8 @@ snapshots:
       - supports-color
       - tedious
 
+  '@directus/sdk@27.2.0': {}
+
   '@directus/system-data@3.3.0': {}
 
   '@directus/themes@1.1.5(@unhead/vue@1.11.20(vue@3.5.18(typescript@5.9.3)))(pinia@2.3.1(typescript@5.9.3)(vue@3.5.18(typescript@5.9.3)))(vue@3.5.18(typescript@5.9.3))':
@@ -6297,6 +6312,8 @@ snapshots:
   '@types/geojson@7946.0.16': {}
 
   '@types/http-errors@2.0.5': {}
+
+  '@types/ms@2.1.0': {}
 
   '@types/node@22.20.5':
     dependencies:

@@ -8,6 +8,7 @@
     "build": "pnpm --recursive --filter \"./packages/*\" run build",
     "playground": "pnpm --filter playground dev",
     "directus:up": "docker compose up -d",
+    "directus:build": "docker compose -f docker-compose.build.yml up -d --build",
     "directus:down": "docker compose down",
     "directus:logs": "docker compose logs -f directus",
     "directus:restart": "docker compose up -d --force-recreate directus",

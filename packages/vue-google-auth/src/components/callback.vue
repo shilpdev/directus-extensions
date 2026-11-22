@@ -14,8 +14,9 @@ defineOptions({
 
 /*
  * Place this on the page the backend sends the browser back to. It draws nothing itself. On mount
- * it reads Google's standard `?code=` or `?error=` from the URL, takes it out of the URL, and
- * finishes the login.
+ * it reads Google's standard `?error=` from the URL and takes it out of the URL.
+ * Without an error the backend has already set the session cookie, so there is nothing to
+ * exchange: the login finishes by loading the user, which proves the cookie works.
  * On success it emits the page the user was on before logging in (kept by <AuthLoginButton>).
  */
 const { returnToKey = RETURN_TO_KEY } = defineProps<{
@@ -32,28 +33,24 @@ const context = useAuthContext()
 
 onMounted(async () => {
   const url = new URL(window.location.href)
-  const code = url.searchParams.get('code')
   const errorCode = url.searchParams.get('error')
 
-  // The code works once: take it out of the URL before anything else, so a reload can't reuse it.
+  // Take the error out of the URL so a reload doesn't show it again.
   // The current history state is kept, because routers store their position in it.
-  url.searchParams.delete('code')
   url.searchParams.delete('error')
   window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash)
 
-  if (errorCode || !code) {
-    context.error = errorCode ? String(errorCode) : 'Missing code'
-    context.log(`Callback returned ${errorCode ? `?error=${errorCode}` : 'no code'}`)
+  if (errorCode) {
+    context.error = errorCode
+    context.log(`Callback returned ?error=${errorCode}`)
     emit('failure')
     return
   }
 
-  context.log('Callback returned ?code=...')
+  context.log('Callback returned, session cookie is set')
 
-  const isLoggedIn = await context.startSession(async () => {
-    if (!context.adapter?.exchangeCode) throw new Error('adapter.exchangeCode is not defined')
-    await context.adapter.exchangeCode(String(code))
-  })
+  // Nothing to exchange, the session cookie is already there
+  const isLoggedIn = await context.startSession(async () => {})
 
   if (!isLoggedIn) {
     emit('failure')

@@ -14,5 +14,9 @@ export const FLOW_COOKIE_NAME = "google_auth_state";
 
 export const FLOW_COOKIE_TTL_SECONDS = 10 * 60;
 
-// How long the code handed to the frontend stays valid before it is exchanged
-export const SESSION_CODE_TTL_MS = 2 * 60 * 1000;
+/*
+ * How long the session row created at login lives before it is refreshed.
+ * In "session" mode /callback and /token refresh it right away. In "json" mode it is the one
+ * time code of the redirect flow: the frontend has this long to trade it with POST /auth/refresh.
+ */
+export const SESSION_CODE_TTL_MS = 2 * 60 * 1000

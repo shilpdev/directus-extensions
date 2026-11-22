@@ -1,0 +1,17 @@
+# Runs Directus from an image that has the built extension baked in, the same
+# way it would run when deployed. Use docker-compose.yml for hot-reload dev.
+# Both files use port ${DIRECTUS_PORT}, so run only one at a time.
+#   docker compose -f docker-compose.build.yml up -d --build
+services:
+  directus:
+    build: .
+    ports:
+      - "${DIRECTUS_PORT}:8055"
+    env_file: .env
+    environment:
+      # Nothing changes on disk in this image, so no reload watcher is needed.
+      EXTENSIONS_AUTO_RELOAD: "false"
+    volumes:
+      - ./docker/database:/directus/database
+      - ./docker/uploads:/directus/uploads
+    restart: unless-stopped

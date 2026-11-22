@@ -15,8 +15,6 @@ export type AuthLogEntry = {
 export type AuthAdapter = {
   // The signed in user, or null when there is no session. Also used to restore a session on app start.
   getUser: () => Promise<AuthUserData | null>
-  // Redirect flow: trade the one time code from the callback URL for a session
-  exchangeCode?: (code: string) => Promise<void>
   // Google button flow: trade Google's ID token for a session
   exchangeCredential?: (credential: string) => Promise<void>
   // End the session on the backend

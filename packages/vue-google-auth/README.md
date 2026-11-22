@@ -42,8 +42,6 @@ import type { AuthAdapter } from '@shilp.dev/vue-google-auth'
 const adapter: AuthAdapter = {
   // The signed in user, or null when there is no session. Also used to restore a session on app start.
   getUser: async () => { /* ... */ },
-  // Redirect flow: trade the one time code from the callback URL for a session
-  exchangeCode: async (code) => { /* ... */ },
   // Google button flow: trade Google's ID token for a session
   exchangeCredential: async (credential) => { /* ... */ },
   // End the session on the backend
@@ -78,7 +76,7 @@ Every component renders only its slot (with a small default markup) and shows it
 The components follow Google's standard names, so they are not configurable:
 
 - The login button sends the browser to your `startUrl` with `?redirect_uri=<callback URL>`.
-- The callback page receives `?code=...` on success or `?error=...` on failure.
+- The callback page receives nothing on success, because the backend has already set the session cookie, or `?error=...` on failure.
 
 ## Reading the session
 
