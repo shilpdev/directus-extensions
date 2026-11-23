@@ -20,8 +20,6 @@ export function readConfig(env: Record<string, unknown>): Config | null {
     .trim()
     .replace(/\/+$/, "");
 
-  console.log(env);
-
   if (!clientId || !clientSecret || !publicUrl.startsWith("http")) return null;
 
   const callbackUrl = `${publicUrl}/${ENDPOINT_ID}/callback`;
