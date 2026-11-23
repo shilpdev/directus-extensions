@@ -7,8 +7,8 @@ Monorepo (pnpm workspaces) for Directus extensions, with a single local Directus
 ```
 packages/        one folder per package
   directus-google-auth   Directus endpoint extension (Google login)
-  vue-google-auth        Headless Google OAuth components for Vue
-apps/playground  Nuxt app that uses both packages
+  ai-content-generator   Directus bundle: flow operation to generate content with Claude or Gemini
+apps/playground  Nuxt app that uses directus-google-auth
 docker/          local sqlite DB + uploads (gitignored)
 docker-compose.yml
 ```
