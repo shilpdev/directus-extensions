@@ -22,7 +22,7 @@ All settings are environment variables of the Directus instance. The extension s
 | --- | --- |
 | `SHILP_GOOGLE_AUTH_CLIENT_ID` | Google OAuth client id. Required. |
 | `SHILP_GOOGLE_AUTH_CLIENT_SECRET` | Google OAuth client secret. Required. |
-| `SHILP_GOOGLE_AUTH_REDIRECT_ALLOW_LIST` | Comma separated frontend origins a login may return to, e.g. `https://app.com`. Any page of an allowed origin is accepted. |
+| `SHILP_GOOGLE_AUTH_REDIRECT_ALLOW_LIST` | Comma separated frontend origins a login may return to, e.g. `https://app.com`. Any page of an allowed origin is accepted. Use `https://*.app.com` to accept every subdomain of `app.com` (same scheme and port; the bare `app.com` is not included, list it separately if needed). |
 
 `PUBLIC_URL` and `SECRET` are Directus' own settings and are required too. The callback URL is always `<PUBLIC_URL>/shilp/google-auth/callback`.
 

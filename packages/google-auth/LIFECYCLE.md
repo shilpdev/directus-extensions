@@ -99,7 +99,7 @@ flowchart TD
 - **Where:** `src/routes/start.ts`, on the Directus server.
 - **Does:**
   1. Reads config from env. If `SHILP_GOOGLE_AUTH_CLIENT_ID` or `_CLIENT_SECRET` is missing it returns `503 NOT_CONFIGURED`.
-  2. Checks that the origin of `redirect_uri` is in `SHILP_GOOGLE_AUTH_REDIRECT_ALLOW_LIST`. Otherwise `400 INVALID_REDIRECT`. This stops the endpoint from being an open redirect.
+  2. Checks that the origin of `redirect_uri` is in `SHILP_GOOGLE_AUTH_REDIRECT_ALLOW_LIST`, exactly or through a wildcard entry such as `https://*.app.com`. Otherwise `400 INVALID_REDIRECT`. This stops the endpoint from being an open redirect.
   3. Creates three random values: `state` (CSRF protection), `nonce` (binds the ID token to this attempt), and `verifier` (PKCE secret).
   4. Puts `{ state, nonce, verifier, redirect }` in a JWT signed with Directus's `SECRET`, and sets it as the cookie `google_auth_state` (httpOnly, `SameSite=Lax`, 10 minutes, path = callback path). Nothing is stored on the server.
 - **Response:** `302` to `https://accounts.google.com/o/oauth2/v2/auth` with `client_id`, `redirect_uri` (`<PUBLIC_URL>/shilp/google-auth/callback`), `response_type=code`, `scope=openid email profile`, `state`, `nonce`, `code_challenge` (SHA-256 of `verifier`), `code_challenge_method=S256`, `prompt=select_account`.
