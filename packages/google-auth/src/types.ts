@@ -16,13 +16,19 @@ export type EndpointContext = {
   getSchema: () => Promise<any>
 }
 
+// One SHILP_GOOGLE_AUTH_REDIRECT_ALLOW_LIST entry: an exact origin, or a wildcard
+// that accepts every subdomain of a domain ("https://*.app.com").
+export type AllowedRedirect =
+  | { origin: string }
+  | { protocol: string, hostSuffix: string, port: string }
+
 export type Config = {
   clientId: string
   clientSecret: string
   callbackUrl: string
   callbackPath: string
   secureCookies: boolean
-  allowedRedirects: URL[]
+  allowedRedirects: AllowedRedirect[]
 }
 
 export type GoogleProfile = {
