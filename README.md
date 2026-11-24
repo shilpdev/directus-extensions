@@ -14,6 +14,7 @@ This repository is a pnpm monorepo that holds all of our Directus extensions. Ea
 | --- | --- | --- | --- |
 | [Google Auth](packages/google-auth) | "Login with Google" for custom frontends. Signs users in (and registers them on first login) as regular Directus users, with session cookie or JWT modes. | `@shilp.dev/directus-google-auth` | [![npm](https://img.shields.io/npm/v/@shilp.dev/directus-google-auth.svg)](https://www.npmjs.com/package/@shilp.dev/directus-google-auth) |
 | [AI Content Generator](packages/ai-content-generator) | Flow operation that generates content (descriptions, summaries, copy) with Claude or Gemini from a prompt and a set of variables. | `@shilp.dev/directus-ai-content-generator` | [![npm](https://img.shields.io/npm/v/@shilp.dev/directus-ai-content-generator.svg)](https://www.npmjs.com/package/@shilp.dev/directus-ai-content-generator) |
+| [Counter](packages/counter) | Endpoint that atomically increments a numeric field (views, plays, downloads...) of any item, found by its id or any other field. | `@shilp.dev/directus-counter` | [![npm](https://img.shields.io/npm/v/@shilp.dev/directus-counter.svg)](https://www.npmjs.com/package/@shilp.dev/directus-counter) |
 
 ## How to Install
 
@@ -60,6 +61,7 @@ Contributions are welcome. Below is how to work on the extensions locally, with 
 packages/        one folder per package
   google-auth            Directus endpoint extension (Google login)
   ai-content-generator   Directus bundle: flow operation to generate content with Claude or Gemini
+  counter                Directus endpoint extension (increment views and other counters)
 apps/playground  Nuxt app that uses directus-google-auth
 docker/          local sqlite DB + uploads (gitignored)
 docker-compose.yml

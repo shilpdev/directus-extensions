@@ -1,0 +1,48 @@
+{
+  "name": "@shilp.dev/directus-counter",
+  "description": "Endpoint that atomically increments a numeric field (views, plays, downloads...) of any item, found by its id or any other field.",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "author": "7Span (https://7span.com)",
+  "homepage": "https://github.com/shilpdev/directus-extensions/tree/main/packages/counter#readme",
+  "bugs": {
+    "url": "https://github.com/shilpdev/directus-extensions/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shilpdev/directus-extensions.git",
+    "directory": "packages/counter"
+  },
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-endpoint",
+    "counter",
+    "views",
+    "increment"
+  ],
+  "directus:extension": {
+    "type": "endpoint",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^11.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "^16.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
